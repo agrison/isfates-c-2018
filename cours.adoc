@@ -58,6 +58,7 @@ int main(int argc, char **argv)
 === Versions
 
 Il existe plusieurs versions du langage C:
+
 * K&R C: pour Kernighan et Ritchie
 * ANSI C / ISO C
 * C99: introduit en 1999
@@ -67,6 +68,7 @@ Il existe plusieurs versions du langage C:
 === Compilateur
 
 On trouve plusieurs compilateurs pour le langage C:
+
 * **gcc**
 * **Clang**
 * **Tiny C Compiler**: Créé par https://fr.wikipedia.org/wiki/Fabrice_Bellard[Fabrice Bellard], un ingénieur Français (génie auteur de **LZEXE**, **FFmpeg**, **QEMU**, **BPG image format**, ...)
@@ -98,6 +100,7 @@ On trouve **gdb** qui permet d'effectuer ces tâches. De plus, vous trouverez é
 Il existe des centaines de programmes qui vous permettront d'éditer votre code source C. 
 
 On les sépares en deux catégories:
+
 * Editeurs
 ** Vim ❣️
 ** Emacs
@@ -1591,6 +1594,7 @@ Plusieurs langages ayant des performances similaires mais étant plus simples à
 Le langage Go, créé par Google est une bonne alternative au langage C. Go est un langage qui contient ce qu'on appelle un garbage collector, comme en Java, c'est à dire qu'il gère lui même la mémoire. 
 
 Il apporte de nombreux avantages comme:
+
 * simplicité d'écriture
 * temps de compilation extrêment plus rapide (80% à 90% plus rapide que du C), ce qui le rends même utilisable pour du scripting
 * gestion du multi-threading en standard
