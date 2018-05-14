@@ -117,6 +117,13 @@ On les sépares en deux catégories:
 
 N'importe quel éditeur fera l'affaire, mais il est évident qu'avoir un support de la coloration syntaxique, de l'auto-complétion, surlignage des erreurs est un vrai plus pour éviter les erreurs les plus communes.
 
+=== Bonnes pratiques
+
+Voici un ensemble de bonnes pratiques qu'il est bon d'essayer de respecter, il n'est parfois pas possible de le faire, mais essayer c'est déjà l'essentiel.
+
+Vous les trouverez sur cette 
+https://github.com/mcinglis/c-style[page Github].
+
 == Types & Variables
 === Types
 Le langage C possède de nombreux types différents, parmi lesquels nombres entiers, nombres décimaux, charactères, structures, etc.
