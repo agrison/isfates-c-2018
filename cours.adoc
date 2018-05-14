@@ -28,7 +28,7 @@ ____
 C est un langage de programmation impératif et généraliste. Inventé au début des années 1970 pour réécrire UNIX, C est devenu un des langages les plus utilisés. De nombreux langages plus modernes comme C++, C#, Java et PHP reprennent des aspects de C.
 ____
 
-Le langage C est un langage compilé et de bas niveau, c'est à dire qu'on peut traduire son code en instructions directement comprises par un ordinateur (à l'opposé des *langages interprétés*), et qu'il laisse libre accès à la *gestion de la mémoire* de l'ordinateur, là où d'autres langages de programmation s'en occupent pour le développeur (exemple: Python).
+Le langage C est un langage compilé et de bas niveau, c'est-à-dire qu'on peut traduire son code en instructions directement comprises par un ordinateur (à l'opposé des *langages interprétés* comme Python ou JavaScript), et qu'il laisse libre accès à la *gestion de la mémoire* de l'ordinateur, là où d'autres langages de programmation s'en occupent pour le développeur (exemple: Python).
 
 C'est un langage très utilisé dans divers domaines de l'industrie informatique, en réalité on en trouve partout.
 
@@ -38,6 +38,7 @@ C'est un langage très utilisé dans divers domaines de l'industrie informatique
 * éditeurs de textes
 * jeux vidéos
 * informatique embarquée: satelittes, automobile, ...
+* langages: Python, Redis, sont écrits en C
 * etc.
 
 == Hello, World!
@@ -53,7 +54,7 @@ int main(int argc, char **argv)
 }
 ----
 
-== Ecosystème et Outils
+== Écosystème et Outils
 
 === Versions
 
@@ -85,7 +86,7 @@ En réalité **gcc** est un *driver*, c'est à dire qu'il va lancer un pré-proc
 
 === Linker
 
-Le compilateur produit pour chaque fichier source `.c` un fichier objet `.o`. Le linker a pour role d'assembler ces fichiers objets ainsi que les différentes bibliothèques que vous utilisez (par exemple `readline`) en un fichier exécutable.
+Le compilateur produit pour chaque fichier source `.c` un fichier objet `.o`. Le linker a pour rôle d'assembler ces fichiers objets ainsi que les différentes bibliothèques que vous utilisez (par exemple `readline`) en un fichier exécutable.
 
 Le linker le plus souvent rencontré est `ld`.
 
@@ -108,6 +109,7 @@ On les sépares en deux catégories:
 ** VS Code
 ** Atom
 ** Notepad++
+** Sublime Text
 ** ...
 * IDE
 ** Visual Studio
@@ -115,16 +117,16 @@ On les sépares en deux catégories:
 ** CodeBlocks
 ** ...
 
-N'importe quel éditeur fera l'affaire, mais il est évident qu'avoir un support de la coloration syntaxique, de l'auto-complétion, surlignage des erreurs est un vrai plus pour éviter les erreurs les plus communes.
+N'importe quel éditeur fera l'affaire, mais il est évident qu'avoir la coloration syntaxique, l'auto-complétion ou le surlignage des erreurs est un vrai plus pour éviter les erreurs les plus communes.
 
 === Bonnes pratiques
 
-Voici un ensemble de bonnes pratiques qu'il est bon d'essayer de respecter, il n'est parfois pas possible de le faire, mais essayer c'est déjà l'essentiel.
+Voici un ensemble de bonnes pratiques qu'il est faut essayer de respecter. Il n'est parfois pas possible de le faire, mais essayer c'est déjà un premier pas.
 
 Vous les trouverez sur cette 
 https://github.com/mcinglis/c-style[page Github].
 
-== Types & Variables
+== Types et variables
 === Types
 Le langage C possède de nombreux types différents, parmi lesquels nombres entiers, nombres décimaux, charactères, structures, etc.
 
@@ -183,7 +185,7 @@ if (condition)
 } 
 else 
 {
-    // code à exécuter sir la condition n'est pas vraie.
+    // code à exécuter si la condition n'est pas vraie.
 }
 ```
 
@@ -327,13 +329,13 @@ Le texte contient la lettre 'j' ? oui; i vaut: 7
 Le texte contient la lettre 'j' ? oui; i vaut: 3
 ```
 
-On voit que le fait d'utiliser le mot clé `break` a permis d'intérrompre la boucle et d'éviter 4 itérations à celle-ci.
+On voit que le fait d'utiliser le mot clé `break` a permis d'interrompre la boucle et d'éviter 4 itérations à celle-ci.
 
-Imaginez si la chaine de caractère avait une taille bien plus conséquente, par exemple 1 million de caractères?
+Imaginez si la chaîne de caractère avait une taille bien plus conséquente, par exemple 1 million de caractères?
 
 ==== Continuations
 
-Il est également possible d'ignorer un tour de boucle et de passer directement à la prochaine à l'aide du mot clé `continue`.
+Il est également possible d'ignorer un tour de boucle et de passer directement à la prochaîne à l'aide du mot clé `continue`. Bien sûr, on peut toujours inverser la condition du `continue` et imbriquer toute la suite de la boucle dans la branche du test : l'utilité d'une telle « garde » est justement d'éviter de reléguer le traitement important dans cette imbrication.
 
 ```c
 #include <stdio.h>
@@ -366,24 +368,24 @@ Le code ci-dessus n'affichera pas `3`:
 === Switch
 Some text
 
-== Chaines de caractères
+== Chaînes de caractères
 
-La gestion des chaines de caractère en C peut très vite devenir compliqué, il y'a de nombreux concepts dont il faut tenir compte, et la gestion de la mémoire est sujete à de nombreuses erreurs.
+La gestion des chaînes de caractère en C peut très vite devenir compliquée. Il y a de nombreux concepts dont il faut tenir compte, et la gestion manuelle de la mémoire est sujette à de nombreuses erreurs.
 
-Les chaines de caractères sont stockées sous forme de tableau, chaque case contenant un caractère, suivi d'un caractère final indiquant la fin de chaine `\0`.
+Les chaînes de caractères sont stockées sous forme de tableau, chaque case contenant un caractère, suivi d'un caractère final indiquant la fin de chaîne `\0`.
 
 image::01-string.png[]
 
-Vous trouverez ci-dessous une liste non exhaustive de fonctions qui vous permettrons de réaliser les différentes manipulations courantes sur les chaines de caractères, ainsi que quelques conseils sur quelle fonction savoir utiliser et savoir ne pas utiliser.
+Vous trouverez ci-dessous une liste non exhaustive de fonctions qui vous permettront de réaliser les différentes manipulations courantes sur les chaînes de caractères, ainsi que quelques conseils sur quelle fonction savoir utiliser ou éviter.
 
-### A l'aide de la libC
+### À l'aide de la libC
 
 #### Taille
 
 * `strlen(const char* s)`
 * `strnlen(const char* s, size_t maxlen)`
 
-La fonction `strlen` calcule la taille de la chaine de caractère passée en paramètre.
+La fonction `strlen` calcule la taille de la chaîne de caractère passée en paramètre.
 
 ```c
 #include <stdio.h>
@@ -397,7 +399,7 @@ int main(int argc, char **argv)
 }
 ```
 
-La fonction `strnlen` est sensiblement la même que `strlen` mais n'ira pas tenter de calculer la taille d'une chaine de caractère plus grande que le paramètre `maxlen`.
+La fonction `strnlen` est sensiblement la même que `strlen` mais n'ira pas tenter de calculer la taille d'une chaîne de caractères plus grande que le paramètre `maxlen`.
 
 ```c
 #include <stdio.h>
@@ -417,11 +419,11 @@ int main(int argc, char **argv)
 * `index(const char* s, int c)` 
 * `rindex(const char*s, int c)`
 
-La fonction `index` trouve la première occurence du caractère `c` dans la chaine de caractère `s`. La fonction `index` permet egalement de trouver le caractère de fin de chaine `\0` si besoin.
+La fonction `index` trouve la première occurence du caractère `c` dans la chaîne de caractère `s`. La fonction `index` permet également de trouver le caractère de fin de chaîne `\0` si besoin.
 
-La fonction `rindex` fait la même chose mais trouve la dernière occurence.
+La fonction `rindex` fait la même chose, mais trouve la dernière occurrence.
 
-Si le caractère ne se trouve pas dans la chaine de caractère, alors `index` et `rindex` renvoient `NULL`.
+Si le caractère ne se trouve pas dans la chaîne, alors `index` et `rindex` renvoient `NULL`.
 
 ```c
 #include <stdio.h>
@@ -443,15 +445,15 @@ int main(int argc, char **argv)
 * `strcmp(const char* s1, const char* s2)` 
 * `strncmp(const char* s1, const char* s2, size_t n)`
 
-La fonction `strcmp` compare alphabétiquement deux chaines de caractère `s1` et `s2` pour trouver laquelle est censée se trouver avant l'autre.
+La fonction `strcmp` compare deux chaînes de caractères `s1` et `s2` pour trouver laquelle est la première dans l'ordre lexicographique (basé sur la table ASCII).
 
-La fonction `strncmp` fais la même chose mais ne comparera au maximum que les `n` premiers caractères des deux chaines de caractères. L'utilité étant de pouvoir comparer des chaines de caractères de tailles différentes.
+La fonction `strncmp` fait la même chose mais ne comparera au maximum que les `n` premiers caractères des deux chaînes, l'utilité étant de pouvoir comparer des chaînes de caractères de tailles différentes.
 
 Ces fonctions renvoient :
 
-* un entier < à `0` si la chaine `s1` se trouve alphabétiquement avant `s2`
-* `0` si les chaines sont identiques
-* un entier > à `0` si la chaine `s2` se trouve alphabétiquement après `s2`
+* un entier inférieur à `0` si la chaîne `s1` se trouve lexicographiquement avant `s2`
+* `0` si les chaînes sont identiques
+* un entier > à `0` si la chaîne `s2` se trouve lexicographiquement après `s2`
 
 ```c
 #include <stdio.h>
@@ -473,17 +475,17 @@ int main(int argc, char **argv)
 * `strcasecmp(const char* s1, const char* s2)` 
 * `strncasecmp(const char* s1, const char* s2, size_t n)`
 
-La fonction `strcasecmp` compare alphabétiquement deux chaines de caractère `s1` et `s2` pour trouver laquelle est censée se trouver avant l'autre. Cette fonction ignore la casse, c'est à dire qu'elle ne tiens pas compte des majuscules et des minuscules.
+La fonction `strcasecmp` compare lexicographiquement deux chaînes de caractères `s1` et `s2` pour trouver laquelle est censée se trouver avant l'autre. Cette fonction ignore la casse, c'est-à-dire qu'elle ne tient pas compte des majuscules et des minuscules.
 
-La fonction `strncasecmp` fais la même chose mais ne comparera au maximum que les `n` premiers caractères des deux chaines de caractères. L'utilité étant de pouvoir comparer des chaines de caractères de tailles différentes.
+La fonction `strncasecmp` fait la même chose, mais ne comparera au maximum que les `n` premiers caractères des deux chaînes, l'utilité étant de pouvoir comparer des chaînes de caractères de tailles différentes.
 
 Ces fonctions renvoient :
 
-* un entier < à `0` si la chaine `s1` se trouve alphabétiquement avant `s2`
-* `0` si les chaines sont identiques (à la casse près)
-* un entier > à `0` si la chaine `s2` se trouve alphabétiquement après `s2`
+* un entier < à `0` si la chaîne `s1` se trouve alphabétiquement avant `s2`
+* `0` si les chaînes sont identiques (à la casse près)
+* un entier > à `0` si la chaîne `s2` se trouve alphabétiquement après `s2`
 
-Il est à noter que ces fonctions utilisent la locale de la machine, mais les fonctions `strcasecmp_l` et `strncasecmp_l` permettent d'effectuer le même test en tenant compte de la locale de la machine.
+Il est à noter que ces fonctions n'utilisent pas la locale de la machine, mais les fonctions `strcasecmp_l` et `strncasecmp_l` permettent d'effectuer le même test en en tenant compte.
 
 ```c
 #include <stdio.h>
@@ -505,17 +507,17 @@ int main(int argc, char **argv)
 * `strncat(char* s1, const char* s2, size_t n)`
 * `strlcat(char* s1, const char* s2, size_t size)`
 
-La fonction `strcat` ajoute une copy de la chaine de caractère `s2` à la fin de la chaine de caractère `s1` et y ajoute un caractère de fin de chaine `\0`. La chaine de caractère `s1` doit avoir assez d'espace disponible pour que l'opération soit possible.
+La fonction `strcat` ajoute une copie de la chaîne `s2` à la fin de la chaîne `s1` et y ajoute un caractère de fin de chaîne `\0`. La chaîne `s1` doit avoir assez d'espace disponible pour que l'opération soit possible.
 
-La fonction `strncat` fait la même chose mais au maximum `n` caractères seront copiés de la chaine de caractère `s2`.
+La fonction `strncat` fait la même chose mais au maximum `n` caractères seront copiés de la chaîne de caractère `s2`.
 
-Ces fonctions retournent un pointeur vers la chaine de caractère `s1`.
+Ces fonctions retournent un pointeur vers la chaîne de caractère `s1`.
 
 Il est à noter qu'il est préférable de ne pas utiliser `strcat` et `strncat` car on peut facilement s'exposer à des attaques de type buffer overflow.
 
-C'est pourquoi il est préférable d'utiliser la fonction `strlcat`, qui ont été créée pour être plus sure. La fonction `strlcat` à l'inverse de `strncat` prends en 3ème paramètre la longueur du buffer de `s1` et non la longueur maximum de caractères à copier de la chaine de caractère `s2`. Ce qui implique que `strlcat` copiera au maximum `size - strlen(s1) - 1` caractères de la chaine `s2`.
+C'est pourquoi il est préférable d'utiliser la fonction `strlcat`, qui a été créée pour être plus sûre. La fonction `strlcat` à l'inverse de `strncat` prends en 3ème paramètre la longueur du buffer de `s1` et non la longueur maximum de caractères à copier de la chaîne `s2`. Ce qui implique que `strlcat` copiera au maximum `size - strlen(s1) - 1` caractères de la chaîne `s2`.
 
-Pour finir, la fonction `strlcat` renvoie la taille totale de la chaine de caractère qu'elle a tenté de créer, il est donc possible de vérifier si la chaine `s1` n'avait pas assez de mémoire nécessaire pour permettre d'y insérer la chaine `s2` en fin.
+Pour finir, la fonction `strlcat` renvoie la taille totale de la chaîne de caractère qu'elle a tenté de créer, il est donc possible de vérifier si la chaîne `s1` n'avait pas assez de mémoire nécessaire pour permettre d'y insérer la chaîne `s2` en fin.
 
 ```c
 #include <stdio.h>
@@ -531,11 +533,11 @@ int main(int argc, char **argv)
     printf("%s\n", strncat(s3, s2, 3)); // affiche: Hello, wor
 
     char s4[20] = "Hello, ";
-    printf("taille: %lu, chaine: %s\n",
+    printf("taille: %lu, chaîne: %s\n",
            strlcat(s4, s2, sizeof(s4)),
            s4); // affiche: taille: 13, Hello, world!
 
-    // ici nous avons une chaine trop petite pour y accueillir "world!""
+    // ici nous avons une chaîne trop petite pour y accueillir "world!""
     char s5[10] = "Hello, ";
     unsigned long total_size = strlcat(s5, s2, sizeof(s5));
     if (total_size > sizeof(s5))
@@ -546,7 +548,7 @@ int main(int argc, char **argv)
     }
     else
     {
-        printf("Il y'avait assez de placer pour concaténer\nles deux chaines de caractère\n");
+        printf("Il y'avait assez de placer pour concaténer\nles deux chaînes de caractère\n");
         printf("Résultat: %s\n", s5);
     }
     return 0;
@@ -558,24 +560,24 @@ Résultat:
 ```
 Hello, world!
 Hello, wor
-taille: 13, chaine: Hello, world!
+taille: 13, chaîne: Hello, world!
 La taille nécessaire est de 13
 mais la taille disponible était de 10
 Résultat: Hello, wo
 ```
 
-#### Copies de chaines de caractères 
+#### Copie de chaînes de caractères 
 
 * `strcpy(char* dest, const char* source)`
 * `strncpy(char* dest, const char* source, size_t len)`
 * `stpcpy(char* dest, const char* source)`
 * `stpncpy(char* dest, const char* source, size_t len)`
 
-Les fonctions `strcpy` et `stpcpy` copient la chaine de caractères `source` vers la zone mémoire `dest` (incluant le caractère de fin de chaine `0`).
+Les fonctions `strcpy` et `stpcpy` copient la chaîne de caractères `source` vers la zone mémoire `dest` (incluant le caractère de fin de chaîne `0`).
 
-Les fonctions `strncpy` et `stpncpy` copient au plus `len` caractères de la chaine de caractères `source` vers la zone mémoire `dest` (incluant le caractère de fin de chaine `0`). Si la taille de `source` est plus petit que `len` alors le reste de la zone mémoire `dest` est remplie à l'aide de caractère de fin de chaine `\0`. A noter que dans le cas contraire `dest` ne sera pas alors terminée par `\0`.
+Les fonctions `strncpy` et `stpncpy` copient au plus `len` caractères de la chaîne de caractères `source` vers la zone mémoire `dest` (incluant le caractère de fin de chaîne `0`). Si la taille de `source` est plus petit que `len` alors le reste de la zone mémoire `dest` est remplie à l'aide de caractères de fin de chaîne `\0`. À noter que dans le cas contraire `dest` ne sera pas alors terminée par `\0`.
 
-Les fonctions `strcpy` et `strncpy` retournent un pointeur vers la zone mémoire `dest`, alors que les fonctions `stpcpy` et `stpncpy` retournent un pointeur vers le caractère `\0` de la chaine `dest`. Si comme indiqué auparavant la chaine `dest` n'est pas terminée à l'aide de `\0` par `stpncpy` alors la fonction renverra vers `dest[len]`.
+Les fonctions `strcpy` et `strncpy` retournent un pointeur vers la zone mémoire `dest`, alors que les fonctions `stpcpy` et `stpncpy` retournent un pointeur vers le caractère `\0` de la chaîne `dest`. Si comme indiqué auparavant la chaîne `dest` n'est pas terminée par `\0` par `stpncpy` alors la fonction renverra vers `dest[len]`.
 
 ```c
 #include <stdio.h>
@@ -621,11 +623,11 @@ int main(int argc, char **argv)
 * `char* strdup(const char *s1)`
 * `char* strndup(const char *s1, size_t n)`
 
-Les fonctions `strdup` et `strndup` allouent suffisament de mémoire pour créer une copie de la chaine de caractère `s1`, créent la copie et retourne un pointeur vers cette zone mémoire. Cette zone mémoire étant allouée par `strdup` c'est donc à vous de ne pas oublier de la rendre quand vous n'en avez plus besoin à l'aide de la fonction `free()`.
+Les fonctions `strdup` et `strndup` allouent suffisament de mémoire pour créer une copie de la chaîne de caractère `s1`, créent la copie et retourne un pointeur vers cette zone mémoire. Cette zone mémoire étant allouée par `strdup` c'est donc à vous de ne pas oublier de la libérer quand vous n'en avez plus besoin à l'aide de la fonction `free()`.
 
-Si il n'y a plus assez de mémoire pour créer une copie alors les fonctions `strdup` et `strndup` retournent `NULL` et la variable globale `errno` vaut `ENOMEM`.
+S'il n'y a plus assez de mémoire pour créer une copie alors les fonctions `strdup` et `strndup` retournent `NULL` et la variable globale `errno` vaut `ENOMEM`.
 
-La fonction `strndup` copie au plus `n` caractères de la chaine `s1`.
+La fonction `strndup` copie au plus `n` caractères de la chaîne `s1`.
 
 ```c
 #include <stdio.h>
@@ -647,21 +649,21 @@ int main(int argc, char **argv)
 }
 ```
 
-Donne à l'éxecution:
+Donne à l'exécution:
 
 ```
 name1: John @ 0x7fa67ec02770
 name2: John @ 0x7fa67ec02780
 ```
 
-On remarque que les chaines sont équivalentes, mais qu'elles n'ont pas la même adresse mémoire, ce sont donc des copies à part entière, et modifier la chaine `name2` ne modifiera donc pas la chaine `name1`.
+On remarque que les chaînes sont équivalentes, mais qu'elles n'ont pas la même adresse-mémoire, ce sont donc des copies à part entière, et modifier la chaîne `name2` ne modifiera pas la chaîne `name1`.
 
-#### Scindage
+#### Scindage (ou explosion)
 
 * `char* strtok(char *str, char *separator)`
 * `char* strsep(char **stringp, const char *delim)`
 
-La fonction `strtok` permet de scinder la chaine `str` suivant un séparateur `separator`. Il faut l'appeler plusieurs fois pour récupérer les différents tokens. Si le séparateur ne peut plus être trouvé dans le reste de la chaine, alors `strtok` renvoie `NULL`.
+La fonction `strtok` permet de scinder la chaîne `str` suivant un séparateur `separator`. Il faut l'appeler plusieurs fois pour récupérer les différents tokens. Si le séparateur ne peut plus être trouvé dans le reste de la chaîne, alors `strtok` renvoie `NULL`.
 
 ```c
 #include <stdio.h>
@@ -700,7 +702,7 @@ Recherche de prénoms dans: Alexandre, Julien, Eva, Amélie
 Etat de la variable names après recherche: Alexandre
 ```
 
-Comme on peut le voir, l'utilisation de `strtok` a modifié la chaine de caractères `names`.
+Comme on peut le voir, l'utilisation de `strtok` a modifié la chaîne de caractères `names`.
 
 Exemple de la même fonction avec `strsep`:
 
@@ -741,15 +743,15 @@ Recherche de prénoms dans: Alexandre, Julien, Eva, Jessica
 Etat de la variable names après recherche: (null)
 ``` 
 
-Comme on peut le voir, l'utilisation de `strsep` a également modifié la chaine de caractères `names`.
+Comme on peut le voir, l'utilisation de `strsep` a également modifié la chaîne de caractères `names`.
 
 ### Alternatives
 
-Il existe des librairies que vous pourrez trouver sur internet vous permettant de manipuler des chaines de caractères un plus simplement qu'avec les fonctions de la libC.
+Il existe des librairies que vous pourrez trouver sur internet vous permettant de manipuler des chaînes de caractères un plus simplement qu'avec les fonctions de la libC.
 
-Par exemple la librairie **sds** que vous pourrez trouver à l'adresse suivante: https://github.com/antirez/sds.
+Par exemple la librairie **sds** que vous pourrez trouver à l'adresse suivante: https://github.com/antirez/sds. Elle est écrite par l'auteur de Redis!
 
-Cette librairie permet des usages avancées comme la fusion de chaines de caractères, l'élagage (trim en anglais), l'allocation dynamique de mémoire, etc.
+Cette librairie permet des usages avancées comme la fusion de chaînes de caractères, l'élagage (trim en anglais), l'allocation dynamique de mémoire, etc.
 
 == Tableaux
 
@@ -813,7 +815,7 @@ int matrix[3][3] = {{1, 0, 0}, {0, 1, 0}, {0, 0, 0}};
 
 Le langage C laisse au programmeur la gestion de la mémoire, il est donc important de comprendre les différents concepts.
 
-Vous avez pu voir avec l'utilisation de chaines de caractère, ou bien de tableaux dont on ne connait pas la taille qu'on a donc besoin d'allouer de la mémoire. 
+Vous avez pu voir avec l'utilisation de chaînes de caractère, ou bien de tableaux dont on ne connait pas la taille qu'on a donc besoin d'allouer de la mémoire. 
 
 Dans ce cas la libC nous fournit à travers la bibliothèque `<stdlib.h>` 4 fonctions dont on ne pourra se passer: `malloc`, `calloc`, `realloc` et `free`.
 
@@ -857,7 +859,7 @@ int main(int argc, char **argv)
     for (int i = 0; i < number; ++i)
     {
         printf("Vous avez saisi: %s\n", names[i]);
-        // ne pas oublier de libérer chaque chaine alloué par readline()
+        // ne pas oublier de libérer chaque chaîne alloué par readline()
         free(names[i]);
     }
 
@@ -915,7 +917,7 @@ int main(int argc, char **argv)
     for (int i = 0; i < number; ++i)
     {
         printf("Vous avez saisi: %s\n", names[i]);
-        // ne pas oublier de libérer chaque chaine alloué par readline()
+        // ne pas oublier de libérer chaque chaîne alloué par readline()
         free(names[i]);
     }
 
@@ -964,7 +966,7 @@ int main(int argc, char **argv)
         {
             printf("Vous avez saisi: %s\n", names[i]);
         }
-        // ne pas oublier de libérer chaque chaine alloué par readline()
+        // ne pas oublier de libérer chaque chaîne alloué par readline()
         //free(names[i]);
     }
 
@@ -1045,7 +1047,7 @@ int max(int a, int b)
 
 Il existe deux fonctions `toupper` et `tolower` dans la bibliothèque `ctype.h` qui permettent de renvoyer l'équivalent en majuscule et minuscule d'un caractère donné. 
 
-Tentons de faire la même chose sur une chaine de caractère entière. Voici deux façons de faire, l'une renvoyant `void` et modifiant directement la chaine de caractère passée en paramètre, et l'autre créant une copie du paramètre et modifiant cette copie avant de la renvoyer.
+Tentons de faire la même chose sur une chaîne de caractère entière. Voici deux façons de faire, l'une renvoyant `void` et modifiant directement la chaîne de caractère passée en paramètre, et l'autre créant une copie du paramètre et modifiant cette copie avant de la renvoyer.
 
 ```c
 #include <stdio.h>
@@ -1054,7 +1056,7 @@ Tentons de faire la même chose sur une chaine de caractère entière. Voici deu
 #include <string.h>
 
 /*
-  Modifie la chaine de caractère str pour remplacer chaque 
+  Modifie la chaîne de caractère str pour remplacer chaque 
   caractère par leur équivalent en majuscule. 
 */
 void str_toupper(char *str)
@@ -1067,7 +1069,7 @@ void str_toupper(char *str)
 }
 
 /*
-  Crée une copie de la chaine de caractère str 
+  Crée une copie de la chaîne de caractère str 
   pour y remplacer chaque caractère par son  
   équivalent en minuscule.
   Enfin cette copie est renvoyée, il est donc à charge
@@ -1114,7 +1116,7 @@ int main(int argc, char **argv)
 
 Quels sont les avantages de l'une et de l'autre ?
 
-Vous remarquez aussi l'utilisation de `malloc`, nous allons y revenir plus en détail dans la prochaine partie.
+Vous remarquez aussi l'utilisation de `malloc`, nous allons y revenir plus en détail dans la prochaîne partie.
 
 == Pointeurs
 
@@ -1159,7 +1161,7 @@ pc == &c;
 *pc == *(&c) == c
 ```
 
-On l'a vu juste un peu plus tôt lors de l'écriture de la fonction `str_toupper` qui modifie directement la chaine de caractère qu'on lui passe en paramètre. C'est ce même fonctionnement qui est à l'oeuvre ici. Ce n'est pas un méchanisme utilisé uniquement pour les chaines de caractère. Dès lors que vous avez l'adresse d'une variable, ou un pointeur qui pointe vers cette adresse mémoire, vous pouvez la lire, ou la modifier.
+On l'a vu juste un peu plus tôt lors de l'écriture de la fonction `str_toupper` qui modifie directement la chaîne de caractère qu'on lui passe en paramètre. C'est ce même fonctionnement qui est à l'oeuvre ici. Ce n'est pas un méchanisme utilisé uniquement pour les chaînes de caractère. Dès lors que vous avez l'adresse d'une variable, ou un pointeur qui pointe vers cette adresse mémoire, vous pouvez la lire, ou la modifier.
 
 Par exemple, créons une fonction qui multiplie par 2 l'entier passé en paramètres :
 
@@ -1300,9 +1302,9 @@ int main(int argc, char **argv)
 Ici on remarque que le fait de prendre le flux d'entrée sortie évite d'avoir à ouvrir un fichier, s'assurer qu'il s'est ouvert sans problème et également de devoir le fermer avant la fin de programme.
 
 
-La fonction `gets` essaye de lire autant de caractères possibles jusqu'à un caractère de saut de ligne depuis l'entrée standard (`stdin`). Ce caractère de saut de ligne n'est pas présent dans la chaine de caractère retournée par `gets`.
+La fonction `gets` essaye de lire autant de caractères possibles jusqu'à un caractère de saut de ligne depuis l'entrée standard (`stdin`). Ce caractère de saut de ligne n'est pas présent dans la chaîne de caractère retournée par `gets`.
 
-Il est fortement déconseillé d'utiliser la fonction `gets`, car elle n'est pas utilisable de façon sécurisée et il est souvent très difficile voir impossible de déterminer à l'avance la taille de la chaine de caractère qui sera lue. Ceci provoque des problèmes de sécurité permettant à un utilisateur malicieux d'exploiter une faille de type `buffer overflow`.
+Il est fortement déconseillé d'utiliser la fonction `gets`, car elle n'est pas utilisable de façon sécurisée et il est souvent très difficile voir impossible de déterminer à l'avance la taille de la chaîne de caractère qui sera lue. Ceci provoque des problèmes de sécurité permettant à un utilisateur malicieux d'exploiter une faille de type `buffer overflow`.
 
 Il est donc très conseillé d'utiliser la fonction `fgets` (voir plus bas).
 
@@ -1443,7 +1445,7 @@ int main(int argc, char **argv)
 
 Lors de l'exécution du programme, il se met en pause après avoir imprimé `> ` et attends que l'utilisateur saisisse quelque chose puis appuye sur la touche entrée pour valider.
 
-Il est à noter que la chaine de charactère est allouée par la fonction `readline` et que sa zone mémoire doit être libérée lorsqu'on n'en a plus besoin à l'aide de la méthode `free()` qui se trouve dans la bibliothèque `<stdlib.h>`.
+Il est à noter que la chaîne de charactère est allouée par la fonction `readline` et que sa zone mémoire doit être libérée lorsqu'on n'en a plus besoin à l'aide de la méthode `free()` qui se trouve dans la bibliothèque `<stdlib.h>`.
 
 Par défaut vous remarquez également que l'utilisateur peut auto-compléter le noms des fichiers qui se trouvent dans le répertoire d'où l'on a lancé notre programme.
 
@@ -1497,7 +1499,7 @@ La fonction `fputs` permet d'écrire une chaîne de caractère dans un flux de s
 
 Le résultat de la fonction `fputs`est un entier positif si tout s'est bien passé, et `EOF` en cas d'erreur d'écriture.
 
-Exemple d'écriture d'une chaine de caractère sur la sortie standard:
+Exemple d'écriture d'une chaîne de caractère sur la sortie standard:
 
 ```sh 
 $ gcc hello.c -o hello.exe && ./hello.exe
@@ -1566,9 +1568,9 @@ int main(int argc, char **argv)
 
 La fonction `puts` permet d'écrire une chaîne de caractère dans la sortie standard (`stdout`).
 
-Il est à noter que la fonction `puts` ajoutera automatiquement un caractère de saut de ligne à la suite de la chaine de caractère que vous voulez imprimer.
+Il est à noter que la fonction `puts` ajoutera automatiquement un caractère de saut de ligne à la suite de la chaîne de caractère que vous voulez imprimer.
 
-Exemple d'écriture d'une chaine de caractère sur la sortie standard:
+Exemple d'écriture d'une chaîne de caractère sur la sortie standard:
 
 ```sh 
 $ gcc hello.c -o hello.exe 
@@ -1592,7 +1594,7 @@ int main(int argc, char **argv)
 
 == Alternatives au C
 
-Comme vous pouvez le constater, le C est un langage de bas niveau qui permet de gérer la mémoire nous même. Cela a ses avantages et aussi ses inconvénients. Pour des tâches simples comme la manipulation de chaines de caractères par exemple, ce n'est pas le langage le plus simple à utiliser.
+Comme vous pouvez le constater, le C est un langage de bas niveau qui permet de gérer la mémoire nous même. Cela a ses avantages et aussi ses inconvénients. Pour des tâches simples comme la manipulation de chaînes de caractères par exemple, ce n'est pas le langage le plus simple à utiliser.
 
 Plusieurs langages ayant des performances similaires mais étant plus simples à utiliser, avec de nombreuses bibliothèques disponibles existent.
 
@@ -1606,7 +1608,7 @@ Il apporte de nombreux avantages comme:
 * temps de compilation extrêment plus rapide (80% à 90% plus rapide que du C), ce qui le rends même utilisable pour du scripting
 * gestion du multi-threading en standard
 * nombreuses bibliothèques en standard
-** chaines de caractère
+** chaînes de caractère
 ** HTTP et Web
 ** Cryptographie
 ** ...
