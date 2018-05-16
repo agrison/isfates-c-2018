@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "grid.h": "c",
+        "stdlib.h": "c"
+    }
+}
